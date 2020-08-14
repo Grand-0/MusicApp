@@ -13,3 +13,18 @@ D:\Progects\C# PRO\MusicApp\MusicApp\obj\Debug\MusicApp.csproj.GenerateResource.
 D:\Progects\C# PRO\MusicApp\MusicApp\obj\Debug\MusicApp.csproj.CoreCompileInputs.cache
 D:\Progects\C# PRO\MusicApp\MusicApp\obj\Debug\MusicApp.exe
 D:\Progects\C# PRO\MusicApp\MusicApp\obj\Debug\MusicApp.pdb
+D:\Programming\С#\WPF\MusicApp\MusicApp\obj\Debug\MusicApp.csprojAssemblyReference.cache
+D:\Programming\С#\WPF\MusicApp\MusicApp\obj\Debug\MainWindow.g.cs
+D:\Programming\С#\WPF\MusicApp\MusicApp\obj\Debug\App.g.cs
+D:\Programming\С#\WPF\MusicApp\MusicApp\obj\Debug\MusicApp_MarkupCompile.cache
+D:\Programming\С#\WPF\MusicApp\MusicApp\obj\Debug\MusicApp_MarkupCompile.lref
+D:\Programming\С#\WPF\MusicApp\MusicApp\obj\Debug\MusicApp.exe
+D:\Programming\С#\WPF\MusicApp\MusicApp\obj\Debug\MusicApp.pdb
+D:\Programming\С#\WPF\MusicApp\MusicApp\bin\Debug\MusicApp.exe.config
+D:\Programming\С#\WPF\MusicApp\MusicApp\bin\Debug\MusicApp.exe
+D:\Programming\С#\WPF\MusicApp\MusicApp\bin\Debug\MusicApp.pdb
+D:\Programming\С#\WPF\MusicApp\MusicApp\obj\Debug\MainWindow.baml
+D:\Programming\С#\WPF\MusicApp\MusicApp\obj\Debug\MusicApp.g.resources
+D:\Programming\С#\WPF\MusicApp\MusicApp\obj\Debug\MusicApp.Properties.Resources.resources
+D:\Programming\С#\WPF\MusicApp\MusicApp\obj\Debug\MusicApp.csproj.GenerateResource.cache
+D:\Programming\С#\WPF\MusicApp\MusicApp\obj\Debug\MusicApp.csproj.CoreCompileInputs.cache

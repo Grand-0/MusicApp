@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MusicApp"
         mc:Ignorable="d"
         Background="LightGray"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MusicApp version 0.1 beta" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -18,14 +18,64 @@
         
         <Menu Grid.Row="0" Margin="5, 5, 0, 0">
             <MenuItem Header="Info">
-                <MenuItem Header="Exit"/>
+                <Button Content="Help" Click="Help_Click" />
+                <Button Content="Exit" Click="Exit_Click" />
             </MenuItem>
         </Menu>
 
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
+            <Grid Grid.Column="1" Background="Beige">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="6*"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0"
+                       Content="Enter directory with music"
+                       HorizontalContentAlignment="Center"/>
+                
+                <ScrollViewer Grid.Row="2">
+                    <ListBox 
+                        x:Name="ListBox"></ListBox>
+                </ScrollViewer>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox 
+                    x:Name="Take_Path"
+                    Grid.Column="0" 
+                    Margin="3"
+                    TextWrapping="NoWrap"/>
+
+                    <Button
+                        x:Name="GetPath"
+                        Grid.Column="1"
+                        Background="LightGray"
+                        Content="Get"
+                        Margin="5"
+                        Click="GetPath_Click"
+                        />
+
+                </Grid>
+                
+            </Grid>
+            
+        </Grid>
+
+        <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="0.5*"/>
                 <ColumnDefinition Width="10*"/>
                 <ColumnDefinition Width="0.5*"/>
             </Grid.ColumnDefinitions>
@@ -38,12 +88,28 @@
                 Background="LightGray"
                 Click="Pause_Click"/>
 
+            <Label
+                Grid.Column="1"
+                x:Name="TimeCompositionNow"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Background="Beige"
+                Content="0:00"/>
+
             <Slider
                 Name="TreakSlider"
-                Grid.Column="1"
+                Grid.Column="2"
                 VerticalAlignment="Center"
                 Margin="5, 0, 5, 0"
                 Background="LightGray" ValueChanged="TreakSlider_ValueChanged"/>
+
+            <Label
+                Grid.Column="3"
+                x:Name="EndTimeComposition"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Background="Beige"
+                />
 
         </Grid>
 
@@ -52,7 +118,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
             <Slider
@@ -60,6 +126,10 @@
                 Grid.Column="0"
                 VerticalAlignment="Center"
                 Margin="5, 0, 5, 0"
+                TickPlacement="BottomRight" 
+                TickFrequency="10"
+                IsSnapToTickEnabled="True"
+                Maximum="100"
                 Background="LightGray" ValueChanged="VolumeSlider_ValueChanged"/>
 
             <Grid Grid.Column="1">
@@ -75,18 +145,16 @@
                 </Grid.ColumnDefinitions>
 
                 <Button
-                    Name="Again"
                     Grid.Column="1"
                     Grid.Row="1"
-                    Content="&#x21BB;"
+                    Content="&#x25BA;"
                     FontSize="25"
                     Background="LightGray"/>
 
                 <Button
-                    Name="Random"
                     Grid.Column="0"
                     Grid.Row="1"
-                    Content="&#x21CB;"
+                    Content="&#x25C4;"
                     FontSize="25"
                     Background="LightGray"/>
 
@@ -108,11 +176,33 @@
                 
             </Grid>
 
-            <ListBox 
-                Name="CompozitionsList"
-                Grid.Column="2"
-                Background="LightYellow"
-                Margin="5, 5, 5, 5" SelectionChanged="ListBox_SelectionChanged"/>
+            <Grid Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                
+                <Button
+                    Name="Again"
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    Content="&#x21BB;"
+                    FontSize="25"
+                    Background="LightGray"/>
+
+                <Button
+                    Name="Random"
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Content="&#x21CB;"
+                    FontSize="25"
+                    Background="LightGray"/>
+
+            </Grid>
 
         </Grid>
         

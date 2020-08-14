@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MusicApp.Control;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -27,81 +28,70 @@ namespace MusicApp
         }
 
         MediaPlayer media = new MediaPlayer();
-        List<string> treakWay = Music.TreaksWay();
-        int treakCount = 0;
+        List<string> CompositionList = new List<string>();
+        string path = "";
+        int CompositionNumber;
 
         private void Pause_Click(object sender, RoutedEventArgs e)
         {
-            if(Pause.IsChecked == true)
-            {
-                media.Play();
-            }
-            else
-            {
+            if (Pause.IsChecked == true)
                 media.Pause();
-            }
-        }
-
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            List<string> treakName = Music.TreakName();
-            for (int i = 0; i < treakName.Count; i++)
-            {
-                Content = treakName[i] + "/n";
-            }
+            else media.Play();
         }
 
         private void Next_Click(object sender, RoutedEventArgs e)
         {
-            media.Stop();
-
-            treakCount++;
-
-            if (treakCount <= Music.TreakCount())
-            {
-                media.Open(new Uri(treakWay[treakCount], UriKind.Absolute));
-            }
-            else
-            {
-                treakCount = 0;
-                media.Open(new Uri(treakWay[treakCount], UriKind.Absolute));
-            }
-
-            media.Play();
+            NextComposition.ChangeComposition(CompositionList, media, ref CompositionNumber);
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            media.Stop();
-
-            treakCount--;
-
-            if (treakCount <= -1)
-            {
-                treakCount = Music.TreakCount();
-                media.Open(new Uri(treakWay[treakCount], UriKind.Absolute));
-            }
-            else
-            {
-                media.Open(new Uri(treakWay[treakCount], UriKind.Absolute));
-            }
-
-            media.Play();
+            PreviousComposition.ChangeComposition(CompositionList, media, ref CompositionNumber);
         }
 
         private void VolumeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            VolumeSlider.Maximum = 100;
             VolumeSlider.Minimum = 0;
+            VolumeSlider.Maximum = 100;
+            media.Volume = VolumeSlider.Value;
         }
 
         private void TreakSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            TreakSlider.Maximum = media.NaturalDuration.TimeSpan.TotalMinutes;
-            media.Pause();
-            media.Position = TimeSpan.FromMinutes(TreakSlider.Value);
-            media.Play();
+            if (media.Source != null)
+            {
+                TreakSlider.Maximum = media.NaturalDuration.TimeSpan.TotalMinutes;
+                media.Position = TimeSpan.FromMinutes(TreakSlider.Value);
+                media.Play();
+            }
         }
 
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+        
+        private void Help_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void GetPath_Click(object sender, RoutedEventArgs e)
+        {
+            CompositionNumber = 0;
+
+            path = Take_Path.Text;
+
+            foreach (string d in MusicSearcher.SearchPathMusic(path))
+            {
+                CompositionList.Add(d);
+            }
+
+            ListBox.ItemsSource = CompositionList;
+
+            StartComposition.PlayStartComposition(CompositionList, media, CompositionNumber);
+
+            EndTimeComposition.Content = media.Position.TotalSeconds.ToString();
+        }
     }
 }
